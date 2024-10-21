@@ -42,8 +42,8 @@ module.exports = function(grunt){
                 files: [{
                     expand: true,
                     flatten: true,
-                    src: "./src/index.html",
-                    dest: "./dev"
+                    src: ["src/index.html"],
+                    dest: "dev/"
                 }]
             },
             dist: {
@@ -55,24 +55,26 @@ module.exports = function(grunt){
                         }
                     ]
                 },
-                files: {
+                files: [{
                     expand: true,
                     flatten: true,
-                    src: "./prebuild/index.html",
-                    dest: "./dist"
-                }
+                    src: ["prebuild/index.html"],
+                    dest: "dist/"
+                }]
             }
         },
         htmlmin: {
-            options: {
-                removeComments: true,
-                collapseWhiteSpace: true
-            },
-            files: {
-                "./prebuild" : ".src/index.html"
+            dist:{
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: {
+                    "prebuild/index.html" : "src/index.html"
+                }
             }
         },
-        clean: ["prebuild"]
+        clean: ['prebuild']
     })
 
     grunt.loadNpmTasks("grunt-contrib-less")
@@ -82,5 +84,5 @@ module.exports = function(grunt){
     grunt.loadNpmTasks("grunt-contrib-clean")
 
     grunt.registerTask("default", ["watch"])
-    grunt.registerTask("build", ["less:production"])
+    grunt.registerTask("build", ["less:production", "htmlmin:dist", "replace:dist", "clean"])
 }
