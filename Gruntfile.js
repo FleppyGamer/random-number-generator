@@ -36,6 +36,10 @@ module.exports = function(grunt){
                         {
                             match: "CSS_ADDRESS",
                             replacement: "./styles/main.css"
+                        },
+                        {
+                            match: "@@JS_ADDRESS",
+                            replacement: "./scripts/main.js" // This is just a test. In case Gruntfile doesn't work, try adding double periods before /scripts instead of just one.
                         }
                     ]
                 },
@@ -52,6 +56,10 @@ module.exports = function(grunt){
                         {
                             match: "CSS_ADDRESS",
                             replacement: "./styles/main.min.css"
+                        },
+                        {
+                            match: "@@JS_ADDRESS",
+                            replacement: "./scripts/main.min.js" // This is just a test. In case Gruntfile doesn't work, try adding double periods before /scripts instead of just one.
                         }
                     ]
                 },
