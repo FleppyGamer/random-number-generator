@@ -39,7 +39,7 @@ module.exports = function(grunt){
                         },
                         {
                             match: "JS_ADDRESS",
-                            replacement: "./scripts/main.js" // This is just a test. In case Gruntfile doesn't work, try adding double periods before /scripts instead of just one.
+                            replacement: "../src/scripts/main.js"
                         }
                     ]
                 },
@@ -48,7 +48,8 @@ module.exports = function(grunt){
                     flatten: true,
                     src: ["src/index.html"],
                     dest: "dev/"
-                }]
+                }
+            ]
             },
             dist: {
                 options: {
