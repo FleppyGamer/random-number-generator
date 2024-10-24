@@ -9,12 +9,16 @@ document.addEventListener("DOMContentLoaded", function(){
         let randomNum = Math.random() * limNum;
         randomNum = Math.round(randomNum);
 
-        let chosenNumVal = document.getElementById("chosen-number-value");
+        const result = document.querySelector(".chosen-number");
+        const chosenNumVal = document.getElementById("chosen-number-value");
 
         if (randomNum < 1){
             randomNum = randomNum + 1;
+            
+            result.style.display = "block";
             chosenNumVal.innerText = randomNum;
         } else{
+            result.style.display = "block";
             chosenNumVal.innerText = randomNum;
         }
 
