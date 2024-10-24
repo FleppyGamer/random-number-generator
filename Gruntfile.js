@@ -60,7 +60,7 @@ module.exports = function(grunt){
                         },
                         {
                             match: "JS_ADDRESS",
-                            replacement: "./scripts/main.min.js" // This is just a test. In case Gruntfile doesn't work, try adding double periods before /scripts instead of just one.
+                            replacement: "./scripts/main.min.js"
                         }
                     ]
                 },
@@ -83,15 +83,23 @@ module.exports = function(grunt){
                 }
             }
         },
-        clean: ['prebuild']
+        clean: ['prebuild'],
+        uglify: {
+            target: {
+                files: {
+                    "dist/scripts/main.min.js" : "src/scripts/main.js"
+                }
+            }
+        }
     })
 
-    grunt.loadNpmTasks("grunt-contrib-less")
-    grunt.loadNpmTasks("grunt-contrib-watch")
-    grunt.loadNpmTasks("grunt-replace")
-    grunt.loadNpmTasks("grunt-contrib-htmlmin")
-    grunt.loadNpmTasks("grunt-contrib-clean")
+    grunt.loadNpmTasks("grunt-contrib-less");
+    grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-replace");
+    grunt.loadNpmTasks("grunt-contrib-htmlmin");
+    grunt.loadNpmTasks("grunt-contrib-clean");
+    grunt.loadNpmTasks("grunt-contrib-uglify");
 
     grunt.registerTask("default", ["watch"])
-    grunt.registerTask("build", ["less:production", "htmlmin:dist", "replace:dist", "clean"])
+    grunt.registerTask("build", ["less:production", "htmlmin:dist", "replace:dist", "clean", "uglify"])
 }
